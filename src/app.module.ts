@@ -1,10 +1,17 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthStrategy } from './auth/auth.strategy';
 
 @Module({
-  imports: [],
+  imports: [PassportModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthStrategy],
 })
 export class AppModule {}
